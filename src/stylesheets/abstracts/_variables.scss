@@ -1,0 +1,404 @@
+
+@use 'sass:math';
+@use 'sass:string';
+@use 'sass:list';
+@use 'sass:map';
+
+$font: 'Lato';
+
+
+// $blue: #1976d2;
+// $red: #f44336;
+// $orange: #ed534c;
+// $brown: #795548;
+// $white: #ffffff;
+// $black: #000000;
+
+// $primary: $orange;
+// $secondary: $brown;
+
+// $orange-100: #f49894;
+// $orange-200: #f28782;
+// $orange-300: #f17570;
+// $orange-400: #ef645e;
+// $orange-500: $orange;
+// $orange-600: #d54b44;
+// $orange-700: #be423d;
+// $orange-800: #a63a35;
+// $orange-900: #8e322e;
+
+// $brown-100: #af9991;
+// $brown-200: #a1887f;
+// $brown-300: #94776d;
+// $brown-400: #86665a;
+// $brown-500: $brown;
+// $brown-600: #6d4d41;
+// $brown-700: #61443a;
+// $brown-800: #553b32;
+// $brown-900: #49332b;
+
+
+$font-size: 1rem; // 1rem=10px
+
+$ft-horizontal-sf: 1.067 !default;
+$ft-vertical-sf: 1.2 !default;
+
+$vertical-scale: (
+  h1: $font-size * pow($ft-vertical-sf, 6),
+  h2: $font-size * pow($ft-vertical-sf, 5),
+  h3: $font-size * pow($ft-vertical-sf, 4),
+  h4: $font-size * pow($ft-vertical-sf, 3),
+  h5: $font-size * pow($ft-vertical-sf, 2),
+  h6: $font-size * $ft-vertical-sf,
+  p: $font-size,
+  s1: $font-size / $ft-vertical-sf,
+  s2: $font-size / pow($ft-vertical-sf, 2),
+  s3: $font-size / pow($ft-vertical-sf, 3),
+) !default;
+
+$grid-breakpoints: (
+  sm: 479px,
+  md: 840px,
+  lg: 1280px,
+) !default;
+
+$blue: #0f66fb !default;
+$gray: #262645 !default;
+$green: #0e8818 !default;
+$red: #ab0742 !default;
+$orange: #c34500 !default;
+$light-gray: #f3f5f8 !default;
+$skyblue: #0094ff !default;
+$purple: #5726e1 !default;
+$teal: #027062 !default;
+$magenta: #ea0556 !default;
+$yellow: #ffc107 !default;
+$cyan: #2dd1e7 !default;
+$coral: #f64e29 !default;
+$white: #fff !default;
+$black: #000 !default;
+
+$primary: $orange;
+$secondary: $gray;
+
+$gray-100: #acacb8 !default;
+$gray-200: #8f91a0 !default;
+$gray-300: #727283 !default;
+$gray-400: #50516a !default;
+$gray-500: $gray !default;
+$gray-600: #1d1f37 !default;
+$gray-700: #16172e !default;
+$gray-800: #00001e !default;
+$gray-900: #000 !default;
+
+$grays: (
+  '100': $gray-100,
+  '200': $gray-200,
+  '300': $gray-300,
+  '400': $gray-400,
+  '500': $gray-500,
+  '600': $gray-600,
+  '700': $gray-700,
+  '800': $gray-800,
+  '900': $gray-900,
+) !default;
+
+
+$colors: (
+  'blue': $blue,
+  'red': $red,
+  'orange': $orange,
+  'yellow': $yellow,
+  'green': $green,
+  // 'white': $white,
+  // 'black': $black,
+  'magenta': $magenta,
+  'teal': $teal,
+  'purple': $purple,
+  'coral': $coral,
+  'skyblue': $skyblue,
+  'cyan': $cyan,
+  'light': $light-gray,
+  'gray': $gray,
+) !default;
+
+$theme-color-interval: 8% !default;
+
+$blue-100: tint-color($blue, 8) !default;
+$blue-200: tint-color($blue, 6) !default;
+$blue-300: tint-color($blue, 4) !default;
+$blue-400: tint-color($blue, 2) !default;
+$blue-500: $blue !default;
+$blue-600: shade-color($blue, 2) !default;
+$blue-700: shade-color($blue, 4) !default;
+$blue-800: shade-color($blue, 6) !default;
+$blue-900: shade-color($blue, 8) !default;
+
+$light-gray-100: tint-color($light-gray, 8) !default;
+$light-gray-200: tint-color($light-gray, 6) !default;
+$light-gray-300: tint-color($light-gray, 4) !default;
+$light-gray-400: tint-color($light-gray, 2) !default;
+$light-gray-500: $light-gray !default;
+$light-gray-600: shade-color($light-gray, 2) !default;
+$light-gray-700: shade-color($light-gray, 4) !default;
+$light-gray-800: shade-color($light-gray, 6) !default;
+$light-gray-900: shade-color($light-gray, 8) !default;
+
+$red-100: tint-color($red, 8) !default;
+$red-200: tint-color($red, 6) !default;
+$red-300: tint-color($red, 4) !default;
+$red-400: tint-color($red, 2) !default;
+$red-500: $red !default;
+$red-600: shade-color($red, 2) !default;
+$red-700: shade-color($red, 4) !default;
+$red-800: shade-color($red, 6) !default;
+$red-900: shade-color($red, 8) !default;
+
+$orange-100: tint-color($orange, 8) !default;
+$orange-200: tint-color($orange, 6) !default;
+$orange-300: tint-color($orange, 4) !default;
+$orange-400: tint-color($orange, 2) !default;
+$orange-500: $orange !default;
+$orange-600: shade-color($orange, 2) !default;
+$orange-700: shade-color($orange, 4) !default;
+$orange-800: shade-color($orange, 6) !default;
+$orange-900: shade-color($orange, 8) !default;
+
+$yellow-100: tint-color($yellow, 8) !default;
+$yellow-200: tint-color($yellow, 6) !default;
+$yellow-300: tint-color($yellow, 4) !default;
+$yellow-400: tint-color($yellow, 2) !default;
+$yellow-500: $yellow !default;
+$yellow-600: shade-color($yellow, 2) !default;
+$yellow-700: shade-color($yellow, 4) !default;
+$yellow-800: shade-color($yellow, 6) !default;
+$yellow-900: shade-color($yellow, 8) !default;
+
+$green-100: tint-color($green, 8) !default;
+$green-200: tint-color($green, 6) !default;
+$green-300: tint-color($green, 4) !default;
+$green-400: tint-color($green, 2) !default;
+$green-500: $green !default;
+$green-600: shade-color($green, 2) !default;
+$green-700: shade-color($green, 4) !default;
+$green-800: shade-color($green, 6) !default;
+$green-900: shade-color($green, 8) !default;
+
+$magenta-100: tint-color($magenta, 8) !default;
+$magenta-200: tint-color($magenta, 6) !default;
+$magenta-300: tint-color($magenta, 4) !default;
+$magenta-400: tint-color($magenta, 2) !default;
+$magenta-500: $magenta !default;
+$magenta-600: shade-color($magenta, 2) !default;
+$magenta-700: shade-color($magenta, 4) !default;
+$magenta-800: shade-color($magenta, 6) !default;
+$magenta-900: shade-color($magenta, 8) !default;
+
+$teal-100: tint-color($teal, 8) !default;
+$teal-200: tint-color($teal, 6) !default;
+$teal-300: tint-color($teal, 4) !default;
+$teal-400: tint-color($teal, 2) !default;
+$teal-500: $teal !default;
+$teal-600: shade-color($teal, 2) !default;
+$teal-700: shade-color($teal, 4) !default;
+$teal-800: shade-color($teal, 6) !default;
+$teal-900: shade-color($teal, 8) !default;
+
+$purple-100: tint-color($purple, 8) !default;
+$purple-200: tint-color($purple, 6) !default;
+$purple-300: tint-color($purple, 4) !default;
+$purple-400: tint-color($purple, 2) !default;
+$purple-500: $purple !default;
+$purple-600: shade-color($purple, 2) !default;
+$purple-700: shade-color($purple, 4) !default;
+$purple-800: shade-color($purple, 6) !default;
+$purple-900: shade-color($purple, 8) !default;
+
+$coral-100: tint-color($coral, 8) !default;
+$coral-200: tint-color($coral, 6) !default;
+$coral-300: tint-color($coral, 4) !default;
+$coral-400: tint-color($coral, 2) !default;
+$coral-500: $coral !default;
+$coral-600: shade-color($coral, 2) !default;
+$coral-700: shade-color($coral, 4) !default;
+$coral-800: shade-color($coral, 6) !default;
+$coral-900: shade-color($coral, 8) !default;
+
+$skyblue-100: tint-color($skyblue, 8) !default;
+$skyblue-200: tint-color($skyblue, 6) !default;
+$skyblue-300: tint-color($skyblue, 4) !default;
+$skyblue-400: tint-color($skyblue, 2) !default;
+$skyblue-500: $skyblue !default;
+$skyblue-600: shade-color($skyblue, 2) !default;
+$skyblue-700: shade-color($skyblue, 4) !default;
+$skyblue-800: shade-color($skyblue, 6) !default;
+$skyblue-900: shade-color($skyblue, 8) !default;
+
+$cyan-100: tint-color($cyan, 8) !default;
+$cyan-200: tint-color($cyan, 6) !default;
+$cyan-300: tint-color($cyan, 4) !default;
+$cyan-400: tint-color($cyan, 2) !default;
+$cyan-500: $cyan !default;
+$cyan-600: shade-color($cyan, 2) !default;
+$cyan-700: shade-color($cyan, 4) !default;
+$cyan-800: shade-color($cyan, 6) !default;
+$cyan-900: shade-color($cyan, 8) !default;
+
+$gray-100: tint-color($gray, 8) !default;
+$gray-200: tint-color($gray, 6) !default;
+$gray-300: tint-color($gray, 4) !default;
+$gray-400: tint-color($gray, 2) !default;
+$gray-500: $gray !default;
+$gray-600: shade-color($gray, 2) !default;
+$gray-700: shade-color($gray, 4) !default;
+$gray-800: shade-color($gray, 6) !default;
+$gray-900: shade-color($gray, 8) !default;
+
+$color-level-map: (
+  $blue: (
+    100: $blue-100,
+    200: $blue-200,
+    300: $blue-300,
+    400: $blue-400,
+    500: $blue-500,
+    600: $blue-600,
+    700: $blue-700,
+    800: $blue-800,
+    900: $blue-900,
+  ),
+  $gray: (
+    100: $gray-100,
+    200: $gray-200,
+    300: $gray-300,
+    400: $gray-400,
+    500: $gray-500,
+    600: $gray-600,
+    700: $gray-700,
+    800: $gray-800,
+    900: $gray-900,
+  ),
+  $light-gray: (
+    100: $light-gray-100,
+    200: $light-gray-200,
+    300: $light-gray-300,
+    400: $light-gray-400,
+    500: $light-gray-500,
+    600: $light-gray-600,
+    700: $light-gray-700,
+    800: $light-gray-800,
+    900: $light-gray-900,
+  ),
+  $green: (
+    100: $green-100,
+    200: $green-200,
+    300: $green-300,
+    400: $green-400,
+    500: $green-500,
+    600: $green-600,
+    700: $green-700,
+    800: $green-800,
+    900: $green-900,
+  ),
+  $red: (
+    100: $red-100,
+    200: $red-200,
+    300: $red-300,
+    400: $red-400,
+    500: $red-500,
+    600: $red-600,
+    700: $red-700,
+    800: $red-800,
+    900: $red-900,
+  ),
+  $orange: (
+    100: $orange-100,
+    200: $orange-200,
+    300: $orange-300,
+    400: $orange-400,
+    500: $orange-500,
+    600: $orange-600,
+    700: $orange-700,
+    800: $orange-800,
+    900: $orange-900,
+  ),
+  $purple: (
+    100: $purple-100,
+    200: $purple-200,
+    300: $purple-300,
+    400: $purple-400,
+    500: $purple-500,
+    600: $purple-600,
+    700: $purple-700,
+    800: $purple-800,
+    900: $purple-900,
+  ),
+  $teal: (
+    100: $teal-100,
+    200: $teal-200,
+    300: $teal-300,
+    400: $teal-400,
+    500: $teal-500,
+    600: $teal-600,
+    700: $teal-700,
+    800: $teal-800,
+    900: $teal-900,
+  ),
+  $yellow: (
+    100: $yellow-100,
+    200: $yellow-200,
+    300: $yellow-300,
+    400: $yellow-400,
+    500: $yellow-500,
+    600: $yellow-600,
+    700: $yellow-700,
+    800: $yellow-800,
+    900: $yellow-900,
+  ),
+  $skyblue: (
+    100: $skyblue-100,
+    200: $skyblue-200,
+    300: $skyblue-300,
+    400: $skyblue-400,
+    500: $skyblue-500,
+    600: $skyblue-600,
+    700: $skyblue-700,
+    800: $skyblue-800,
+    900: $skyblue-900,
+  ),
+  $coral: (
+    100: $coral-100,
+    200: $coral-200,
+    300: $coral-300,
+    400: $coral-400,
+    500: $coral-500,
+    600: $coral-600,
+    700: $coral-700,
+    800: $coral-800,
+    900: $coral-900,
+  ),
+  $cyan: (
+    100: $cyan-100,
+    200: $cyan-200,
+    300: $cyan-300,
+    400: $cyan-400,
+    500: $cyan-500,
+    600: $cyan-600,
+    700: $cyan-700,
+    800: $cyan-800,
+    900: $cyan-900,
+  ),
+  $magenta: (
+    100: $magenta-100,
+    200: $magenta-200,
+    300: $magenta-300,
+    400: $magenta-400,
+    500: $magenta-500,
+    600: $magenta-600,
+    700: $magenta-700,
+    800: $magenta-800,
+    900: $magenta-900,
+  ),
+) !default;
+
+
+$header-height: 6rem;

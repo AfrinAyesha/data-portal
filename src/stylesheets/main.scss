@@ -1,0 +1,19 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+@import 'base/reset';
+
+@import 'abstracts/functions';
+@import 'abstracts/variables';
+
+@import 'abstracts/mixins';
+
+@import 'base/typography';
+
+@import 'components/registration';
+@import 'components/agent-register';
+@import 'components/loader';
+@import 'components/message-banner';
+@import 'components/unauth-header';
+@import 'components/login';
+
+@import 'shame/shame';

@@ -1,0 +1,138 @@
+<div class="agent-register-container" fxLayout="column">
+  <div class="title h1">Agent Registration</div>
+  <div class="form-container">
+    <form [formGroup]="agentForm">
+      <div class="form-field-container">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Full name</mat-label>
+          <input matInput placeholder="Placeholder" formControlName="fullname" />
+        </mat-form-field>
+        <mat-error
+          *ngIf="
+            agentForm.controls.fullname.touched &&
+            (agentForm.controls.fullname.hasError('required') ||
+              agentForm.controls.fullname.hasError('pattern'))
+          "
+          >Please enter a valid name</mat-error
+        >
+      </div>
+      <div class="form-field-container">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Username</mat-label>
+          <input matInput placeholder="Placeholder" formControlName="username" />
+        </mat-form-field>
+        <mat-error
+          *ngIf="
+            agentForm.controls.username.touched &&
+            (agentForm.controls.username.hasError('required') ||
+              agentForm.controls.username.hasError('pattern'))
+          "
+          >Please enter a valid username</mat-error
+        >
+      </div>
+      <div class="form-field-container">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input
+            [type]="showPass ? 'text' : 'password'"
+            matInput
+            placeholder="Placeholder"
+            formControlName="password"
+          />
+          <mat-icon style="cursor: pointer" (click)="showPass = !showPass" matSuffix
+            ><ng-container *ngIf="showPass">visibility_off</ng-container>
+            <ng-container *ngIf="!showPass">visibility</ng-container></mat-icon
+          >
+        </mat-form-field>
+        <mat-error
+          *ngIf="
+            agentForm.controls.password.touched &&
+            (agentForm.controls.password.hasError('required') ||
+              agentForm.controls.password.hasError('pattern'))
+          "
+          >Please enter a valid password</mat-error
+        >
+      </div>
+      <div class="form-field-container">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Confirm Password</mat-label>
+          <input
+            [type]="showConfirmPass ? 'text' : 'password'"
+            matInput
+            placeholder="Placeholder"
+            formControlName="confirmPassword"
+          />
+          <mat-icon style="cursor: pointer" (click)="showConfirmPass = !showConfirmPass" matSuffix
+            ><ng-container *ngIf="showConfirmPass">visibility_off</ng-container>
+            <ng-container *ngIf="!showConfirmPass">visibility</ng-container></mat-icon
+          >
+        </mat-form-field>
+        <mat-error
+          *ngIf="
+            agentForm.controls.confirmPassword.touched &&
+            (agentForm.controls.confirmPassword.hasError('required') ||
+              agentForm.controls.confirmPassword.hasError('mustMatch'))
+          "
+          >Please enter the same password</mat-error
+        >
+      </div>
+      <div class="form-field-container">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Placeholder" formControlName="email" />
+        </mat-form-field>
+        <mat-error
+          *ngIf="
+            agentForm.controls.email.touched &&
+            (agentForm.controls.email.hasError('required') ||
+              agentForm.controls.email.hasError('pattern'))
+          "
+          >Please enter a valid email</mat-error
+        >
+      </div>
+      <div class="form-field-container">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Commision Percentage</mat-label>
+          <input
+            matInput
+            suffix="%"
+            mask="999"
+            type="text"
+            placeholder="Enter commision percentage"
+            formControlName="commisionPercentage"
+            (keypress)="isNumber($event)"
+          />
+        </mat-form-field>
+        <mat-error
+          *ngIf="
+            agentForm.controls.commisionPercentage.touched &&
+            (agentForm.controls.commisionPercentage.hasError('required') ||
+              agentForm.controls.commisionPercentage.hasError('min') ||
+              agentForm.controls.commisionPercentage.hasError('max'))
+          "
+          >Please enter a value between 1 and 100</mat-error
+        >
+      </div>
+      <div class="button-container">
+        <div class="buttons" fxLayout fxLayoutAlign="space-between">
+          <button mat-button class="secondary-btn" (click)="cancel()">cancel</button>
+          <button
+            mat-flat-button
+            class="primary-flat-btn"
+            [disabled]="!agentForm.valid"
+            (click)="submit()"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <app-loader *ngIf="showLoader"></app-loader>
+  <app-message-banner
+    (bannerClosed)="bannerClosed($event)"
+    [showItem]="showBanner"
+    [properties]="bannerProperties"
+    [data]="bannerData"
+  ></app-message-banner>
+</div>

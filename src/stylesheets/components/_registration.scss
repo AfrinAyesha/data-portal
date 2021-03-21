@@ -1,0 +1,29 @@
+.registration-container {
+  .registration-type-container {
+    margin-top: 2rem;
+    padding: 4rem;
+    .title {
+      //   text-align: center;
+      color: color-level($orange, 500);
+      margin-bottom: 2rem;
+    }
+    .sub-title {
+      margin-bottom: 3rem;
+    }
+    .register-card {
+      cursor: pointer;
+      .card-content {
+        .card-image {
+          img {
+            width: 100%;
+          }
+        }
+        .card-text {
+          color: color-level($orange, 500);
+          font-weight: bold;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

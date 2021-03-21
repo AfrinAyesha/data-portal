@@ -1,0 +1,11 @@
+.loader-container {
+  position: fixed;
+  min-height: calc(100vh - ($header-height + 67));
+  min-height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  margin: auto;
+  z-index: 100;
+  background-color: rgba(color-level($gray, 100), 0.2);
+}

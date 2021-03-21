@@ -1,0 +1,14 @@
+.unauth-header {
+  padding: 0rem 2rem;
+  height: $header-height;
+  background-color: $primary;
+  color: $white;
+  box-shadow: 0px 2px 10px $gray-300;
+  .logo-container {
+    width: 30%;
+    #logo {
+      height: 4.4rem;
+      width: 4.4rem;
+    }
+  }
+}

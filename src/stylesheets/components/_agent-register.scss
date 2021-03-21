@@ -1,0 +1,24 @@
+.agent-register-container {
+  //   margin-top: 2rem;
+  width: 75%;
+  margin: 2rem auto auto auto;
+  .title {
+    text-align: center;
+    color: color-level($orange, 500);
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+  .form-container {
+    width: 60%;
+    margin: auto;
+    .form-field-container {
+      margin-bottom: 1rem;
+      .form-field {
+        width: 100%;
+        .mat-form-field-wrapper {
+          padding-bottom: 0rem;
+        }
+      }
+    }
+  }
+}

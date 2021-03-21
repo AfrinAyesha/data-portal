@@ -1,0 +1,24 @@
+@import 'mixins/typography';
+@import 'mixins/buttons';
+
+
+// @mixin generate-bg-color-class {
+//     @each $key, $value in $colors {
+//         @debug $key;
+//         @each $key2, $value2 in map-get($color-level-map, $key) {
+//           @debug $key2, $value2;
+//           .bg-#{$key}-#{$key2} {
+//             background-color: $value2;
+//             position: relative;
+//             height: 50px;
+//             width: 200px;
+//             font-size: 14px;
+//             margin-bottom: 20px;
+//             color: white;
+//             text-align: center;
+           
+//           }
+//         }
+//       }
+      
+// }

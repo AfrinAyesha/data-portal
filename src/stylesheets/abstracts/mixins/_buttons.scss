@@ -1,0 +1,28 @@
+@mixin buttons {
+  %btn {
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 4px;
+    text-align: center;
+  }
+  .primary-btn {
+    @extend %btn;
+    color: $primary;
+  }
+  .secondary-btn {
+    @extend %btn;
+    color: $secondary;
+  }
+  .primary-flat-btn {
+    @extend %btn;
+    background-color: $primary;
+    color: $white;
+  }
+  .secondary-flat-btn {
+    @extend %btn;
+    background-color: $secondary;
+    color: $white;
+  }
+}
+
+@include buttons();

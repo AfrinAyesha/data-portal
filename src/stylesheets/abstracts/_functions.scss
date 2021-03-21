@@ -1,0 +1,29 @@
+@use 'sass:math';
+@use 'sass:string';
+@use 'sass:list';
+@use 'sass:map';
+
+@function pow($number, $exponent) {
+    $value: 1;
+  
+    @if $exponent > 0 {
+      @for $i from 1 through $exponent {
+        $value: $value * $number;
+      }
+    }
+  
+    @return $value;
+  }
+
+  @function tint-color($color, $level) {
+    @return mix(white, $color, $level * $theme-color-interval);
+  }
+  
+  @function shade-color($color, $level) {
+    @return mix(black, $color, $level * $theme-color-interval);
+  }
+
+  @function color-level($color, $level) {
+   $color-map: map-get($color-level-map, $color);
+   @return map-get($map: $color-map, $key:$level )
+  }

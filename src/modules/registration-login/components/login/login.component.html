@@ -1,0 +1,60 @@
+<div class="login-container">
+  <div class="login-image-container" fxFlex="50">
+    <img class="login-image" src="./assets/svg/login.svg" alt="" />
+  </div>
+  <div fxFlex="50" class="login-main-container" fxLayout="column" fxLayoutAlign="center center">
+    <!-- <div fxLayout="column"> -->
+    <div class="title h1">Log In</div>
+    <div class="form-container">
+      <form>
+        <div class="form-field-container">
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput placeholder="Enter your username" formControlName="fullname" />
+          </mat-form-field>
+          <!-- <mat-error
+                  *ngIf="
+                    agentForm.controls.fullname.touched &&
+                    (agentForm.controls.fullname.hasError('required') ||
+                      agentForm.controls.fullname.hasError('pattern'))
+                  "
+                  >Please enter a valid name</mat-error
+                > -->
+        </div>
+        <div class="form-field-container">
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              [type]="showPass ? 'text' : 'password'"
+              matInput
+              placeholder="Enter your password"
+              formControlName="password"
+            />
+            <mat-icon style="cursor: pointer" (click)="showPass = !showPass" matSuffix
+              ><ng-container *ngIf="showPass">visibility_off</ng-container>
+              <ng-container *ngIf="!showPass">visibility</ng-container></mat-icon
+            >
+          </mat-form-field>
+          <!-- <mat-error
+              *ngIf="
+                agentForm.controls.password.touched &&
+                (agentForm.controls.password.hasError('required') ||
+                  agentForm.controls.password.hasError('pattern'))
+              "
+              >Please enter a valid password</mat-error
+            > -->
+        </div>
+        <div class="button-container" fxLayout fxLayoutAlign="center">
+          <button mat-flat-button class="primary-flat-btn">Sign In</button>
+        </div>
+      </form>
+    </div>
+    <!-- </div> -->
+    <div class="sign-up-container" fxLayout="column">
+      <div class="sign-up-title h5">Don't have an account?</div>
+      <div class="sub-title h5">
+        Click on <a routerLink="/auth/register">Sign up</a> to register
+      </div>
+    </div>
+  </div>
+</div>

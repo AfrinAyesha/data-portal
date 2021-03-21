@@ -1,0 +1,40 @@
+<div
+  class="sticky-banner"
+  id="sticky-banner-id"
+  [ngStyle.xs]="styleObjectXs"
+  [ngStyle]="styleObject"
+  [ngClass.xs]="
+    properties.actionProperties.isTypeError ? 'sticky-banner-error-xs' : 'sticky-banner-xs'
+  "
+>
+  <div class="banner-content" fxLayout.xs="columnn">
+    <div (click)="closeBanner('action')" *ngIf="properties.actionProperties.additionalActionButton">
+      <button mat-button class="action-banner-button">
+        {{ properties.actionProperties.additionalActionButtonText }}
+      </button>
+    </div>
+    <div class="main-banner-items">
+      <ng-container *ngFor="let item of data">
+        <span
+          [ngStyle]="item.fontWeight ? { 'font-weight': item.fontWeight } : {}"
+          [style.color]="item.color"
+          *ngIf="item.type === 'text'"
+          >{{ item.input }}</span
+        >
+        <span class="banner-divider" *ngIf="item.type === 'divider'"></span>
+        <span class="banner-icon" *ngIf="item.type === 'icon'">
+          <mat-icon>{{ item.iconName }}</mat-icon>
+        </span>
+      </ng-container>
+    </div>
+    <div
+      class="dismiss-banner-button"
+      fxLayout
+      (click)="closeBanner('dismiss')"
+      *ngIf="properties.actionProperties.canDismiss"
+    >
+      <mat-icon>close</mat-icon>
+      <span class="dismiss-banner-button-text h6">Cancel</span>
+    </div>
+  </div>
+</div>

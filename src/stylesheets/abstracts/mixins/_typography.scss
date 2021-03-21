@@ -1,0 +1,14 @@
+@mixin typography {
+    @each $key, $value in $grid-breakpoints {
+        $i: index(map-keys($grid-breakpoints), $key);
+        @debug $i;
+        @media (min-width: $value) {
+          @each $scale-key, $scale-value in $vertical-scale {
+            .#{$scale-key} {
+              font-size: $scale-value * pow($ft-horizontal-sf, $i - 1) !important;
+            }
+          }
+        }
+      }
+}
+@include typography()
