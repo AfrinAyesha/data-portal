@@ -17,4 +17,8 @@ export class ApiService {
   public registerAgent(data) {
     return this.httpClient.post(`${this.baseURL}/register/agent`, data);
   }
+
+  public login(data) {
+    return this.httpClient.post(`${this.baseURL}/login`, data);
+  }
 }

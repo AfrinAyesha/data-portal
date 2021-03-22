@@ -3,15 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export interface Env {
-  production: boolean,
-  baseURL: string,
-  spaURL: string
+  production: boolean;
+  baseURL: string;
+  spaURL: string;
+  refreshPath: string;
 }
 
 export const environment: Env = {
   production: false,
   baseURL: '',
-  spaURL: ''
+  spaURL: '',
+  refreshPath: '',
 };
 
 /*

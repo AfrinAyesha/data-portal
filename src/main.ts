@@ -14,10 +14,9 @@ if (environment.production) {
 
   environment.baseURL = config.baseURL;
   environment.spaURL = config.spaURL;
+  environment.refreshPath = config.auth.refreshPath;
 
-  
   platformBrowserDynamic()
-  .bootstrapModule(AppModule)
-  .catch((err) => console.error(err));
+    .bootstrapModule(AppModule)
+    .catch((err) => console.error(err));
 })();
-
