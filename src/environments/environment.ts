@@ -7,6 +7,7 @@ export interface Env {
   baseURL: string;
   spaURL: string;
   refreshPath: string;
+  refreshTokenTimeoutInMs: number;
 }
 
 export const environment: Env = {
@@ -14,6 +15,7 @@ export const environment: Env = {
   baseURL: '',
   spaURL: '',
   refreshPath: '',
+  refreshTokenTimeoutInMs: 100000,
 };
 
 /*

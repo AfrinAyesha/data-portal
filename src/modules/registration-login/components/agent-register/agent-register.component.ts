@@ -85,6 +85,7 @@ export class AgentRegisterComponent implements OnInit, OnDestroy {
       this.sandbox.agenterror$.subscribe((error) => {
         this.error = error;
         if (this.error !== null) {
+          this.bannerData[0].input = this.error;
           this.showBanner = true;
         } else {
           this.showBanner = false;

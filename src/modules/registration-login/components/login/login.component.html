@@ -6,20 +6,20 @@
     <!-- <div fxLayout="column"> -->
     <div class="title h1">Log In</div>
     <div class="form-container">
-      <form>
+      <form [formGroup]="loginForm">
         <div class="form-field-container">
           <mat-form-field class="form-field" appearance="outline">
             <mat-label>Username</mat-label>
-            <input matInput placeholder="Enter your username" formControlName="fullname" />
+            <input matInput placeholder="Enter your username" formControlName="username" />
           </mat-form-field>
-          <!-- <mat-error
-                  *ngIf="
-                    agentForm.controls.fullname.touched &&
-                    (agentForm.controls.fullname.hasError('required') ||
-                      agentForm.controls.fullname.hasError('pattern'))
-                  "
-                  >Please enter a valid name</mat-error
-                > -->
+          <mat-error
+            *ngIf="
+              loginForm.controls.username.touched &&
+              (loginForm.controls.username.hasError('required') ||
+                loginForm.controls.username.hasError('pattern'))
+            "
+            >Please enter a valid name</mat-error
+          >
         </div>
         <div class="form-field-container">
           <mat-form-field class="form-field" appearance="outline">
@@ -35,17 +35,17 @@
               <ng-container *ngIf="!showPass">visibility</ng-container></mat-icon
             >
           </mat-form-field>
-          <!-- <mat-error
-              *ngIf="
-                agentForm.controls.password.touched &&
-                (agentForm.controls.password.hasError('required') ||
-                  agentForm.controls.password.hasError('pattern'))
-              "
-              >Please enter a valid password</mat-error
-            > -->
+          <mat-error
+            *ngIf="
+              loginForm.controls.password.touched &&
+              (loginForm.controls.password.hasError('required') ||
+                loginForm.controls.password.hasError('pattern'))
+            "
+            >Please enter a valid password</mat-error
+          >
         </div>
         <div class="button-container" fxLayout fxLayoutAlign="center">
-          <button mat-flat-button class="primary-flat-btn">Sign In</button>
+          <button (click)="signIn()" mat-flat-button class="primary-flat-btn">Sign In</button>
         </div>
       </form>
     </div>
@@ -56,5 +56,12 @@
         Click on <a routerLink="/auth/register">Sign up</a> to register
       </div>
     </div>
+    <app-loader *ngIf="showLoader"></app-loader>
+    <app-message-banner
+      (bannerClosed)="bannerClosed($event)"
+      [showItem]="showBanner"
+      [properties]="bannerProperties"
+      [data]="bannerData"
+    ></app-message-banner>
   </div>
 </div>

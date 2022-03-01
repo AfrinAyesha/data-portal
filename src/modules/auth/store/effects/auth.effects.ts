@@ -20,7 +20,8 @@ export class AuthEffects {
       ofType(authActions.refreshToken),
       switchMap(() => {
         return this.apiService.refreshToken().pipe(
-          map((loginDataSuccess) => {
+          map((loginDataSuccess: any) => {
+            window.sessionStorage.setItem('access_token', loginDataSuccess.access_token);
             return authActions.authLoginSuccess();
           }),
           catchError((loginDataError) => {

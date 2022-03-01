@@ -7,6 +7,7 @@ import { switchMap, catchError, map } from 'rxjs/operators';
 import { ApiService } from '../../services/api.service';
 import * as fromStore from '../../store';
 import * as loginActions from '../actions/login.action';
+import * as authActions from 'src/modules/auth/store/action/auth.action';
 
 @Injectable()
 export class LoginEffects {
@@ -21,8 +22,10 @@ export class LoginEffects {
       ofType(loginActions.login),
       switchMap(({ loginData }) => {
         return this.apiService.login(loginData).pipe(
-          map((loginDataSuccess) => {
-            return loginActions.loginSuccess({ loginDataSuccess });
+          map((loginDataSuccess: any) => {
+            window.sessionStorage.setItem('access_token', loginDataSuccess.access_token);
+            window.sessionStorage.setItem('refresh_token', loginDataSuccess.refresh_token);
+            return loginActions.loginSuccess();
           }),
           catchError((loginDataError) => {
             console.log('error', loginDataError);
@@ -34,6 +37,20 @@ export class LoginEffects {
           })
         );
       })
+    )
+  );
+
+  authlogin$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(loginActions.loginSuccess),
+      map(() => authActions.authLoginSuccess())
+    )
+  );
+
+  authloginfail$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(loginActions.loginFail),
+      map(() => authActions.authLoginFail())
     )
   );
 

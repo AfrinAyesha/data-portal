@@ -15,6 +15,7 @@ if (environment.production) {
   environment.baseURL = config.baseURL;
   environment.spaURL = config.spaURL;
   environment.refreshPath = config.auth.refreshPath;
+  environment.refreshTokenTimeoutInMs = config.auth.refreshTokenTimeoutInMs;
 
   platformBrowserDynamic()
     .bootstrapModule(AppModule)

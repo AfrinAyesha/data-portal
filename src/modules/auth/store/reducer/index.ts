@@ -9,4 +9,4 @@ export const reducers: ActionReducerMap<AuthState> = {
   auth: fromAuth.AuthLoginReducer,
 };
 
-export const getRouterState = createFeatureSelector<AuthState>('auth');
+export const getAuthState = createFeatureSelector<AuthState>('auth');

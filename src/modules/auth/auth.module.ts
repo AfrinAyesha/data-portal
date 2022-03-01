@@ -7,6 +7,8 @@ import { ApiService, ModuleConfig } from './services/api.service';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { reducers, effects } from './store';
+import { AuthSandbox } from './sandbox/auth.sandbox';
+import { AuthGuard } from './guards/auth-guard.service';
 
 export { ModuleConfig };
 export interface ModuleOptions {
@@ -36,6 +38,8 @@ export class AuthModule {
       ngModule: AuthModule,
       providers: [
         ApiService,
+        AuthSandbox,
+        AuthGuard,
         {
           provide: FOR_ROOT_OPTIONS_TOKEN,
           useValue: options,
